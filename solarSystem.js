@@ -5,28 +5,19 @@ const planets = ["mercury", "venus", "earth", "mars", "jupiter", "saturn", "uran
     to a section element in your HTML with an id of "planets".
     Use string templates to construct the DOM elements.
 */
+let domString = "";
 
-// Render to DOM
-const renderToDom = (divId, textToPrint) => {
-  const selectedDiv = document.querySelector(divId);
-  selectedDiv.innerHTML = textToPrint;
-}
-
-const planetEl = document.getElementById("planets")
-
-manufacturingBusinesses.forEach(business => {
-  const zipCode = business.addressZipCode;
-  outEl.innerHTML += `
-    <h2>${business.companyName}</h2>
+planets.forEach(planet => {
+  domString += `
     <section>
-      ${business.addressFullStreet}
+      ${planet}
     </section>
-    <section>
-      ${business.addressCity}, ${business['addressStateCode']} ${zipCode}
-    </section>
-  `
-  outEl.innerHTML += "<hr/>"
+  `;
+
+  const planetEl = document.getElementById("planets")
+  planetEl.innerHTML = domString;
 });
+
 
 /*
     Use the map method to create a new array where the
@@ -35,6 +26,18 @@ manufacturingBusinesses.forEach(business => {
 
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase
 */
+planets.map(planet => {
+  let firstLetter = planet.charAt(0).toUpperCase();
+  let remainingLetters = planet.slice(1);
+  domString += `
+    <section>
+      ${firstLetter}${remainingLetters}
+    </section>
+  `;
+
+  const planetEl = document.getElementById("planets")
+  planetEl.innerHTML = domString;
+});
 
 
 /*
@@ -44,3 +47,9 @@ manufacturingBusinesses.forEach(business => {
 
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
 */
+planets.map(planet => {
+  planet.includes('e') ? domString += `${planet} `: '';
+
+  const planetEl = document.getElementById("planets")
+  planetEl.innerHTML = domString;
+});
