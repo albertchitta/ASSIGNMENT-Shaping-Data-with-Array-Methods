@@ -1,4 +1,4 @@
-import businesses from "./data.js";
+import { businesses, customers } from "./data.js"
 
 const outEl = document.querySelector("#output")
 outEl.innerHTML += "<h1>Purchasing Agents</h1>";
